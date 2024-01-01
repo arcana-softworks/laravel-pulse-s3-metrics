@@ -5,6 +5,8 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/arcana-softworks/laravel-pulse-s3-metrics/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/arcana-softworks/laravel-pulse-s3-metrics/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/arcana/laravel-pulse-s3-metrics.svg?style=flat-square)](https://packagist.org/packages/arcana/laravel-pulse-s3-metrics)
 
+![Screenshot of the S3 Metrics Pulse card](art%2Fscreenshot1.png)
+
 Fetch existing data usage and storage metrics from AWS CloudWatch for your S3 buckets and display them in a card on your [Laravel Pulse](https://pulse.laravel.com/) dashboard.
 
 ## Hire us
