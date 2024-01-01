@@ -1,5 +1,5 @@
 <?php
 
-it('will not use debugging functions')
+arch('globals')
     ->expect(['dd', 'dump', 'ray'])
-    ->each->not->toBeUsed();
+    ->not->toBeUsed();

@@ -1,36 +1,49 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Arcana\PulseS3Metrics\Tests;
 
+use Arcana\PulseS3Metrics\PulseS3MetricsServiceProvider;
+use Arcana\PulseS3Metrics\Recorders\S3Metrics;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Pulse\PulseServiceProvider;
+use Livewire\LivewireServiceProvider;
+use Orchestra\Testbench\Attributes\WithMigration;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase, WithWorkbench;
+
+    protected $enablesPackageDiscoveries = true;
+
     protected function setUp(): void
     {
+        $this->usesTestingFeature(new WithMigration('laravel', 'queue'));
+
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Arcana\\PulseS3Metrics\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
-            SkeletonServiceProvider::class,
-        ];
     }
 
     public function getEnvironmentSetUp($app)
     {
+        // Load the testing .env file.
+        $app->useEnvironmentPath(__DIR__.'/../workbench');
+        $app->bootstrapWith([LoadEnvironmentVariables::class]);
+
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        $migration->up();
-        */
+        config()->set('pulse.recorders', [
+            S3Metrics::class => [
+                'enabled' => config('pulse-s3-metrics.enabled'),
+            ],
+        ]);
+
+        parent::getEnvironmentSetUp($app);
     }
 }
