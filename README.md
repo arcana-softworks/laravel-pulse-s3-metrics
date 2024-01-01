@@ -9,7 +9,7 @@ Fetch existing data usage and storage metrics from AWS CloudWatch for your S3 bu
 
 ## Hire us
 
-Developers at [Arcana Softworks](https://arcana-softworks.co.uk) been building business-class PHP applications for more than 10 years. [Learn more about what we can do for you or your business](https://arcana-softworks.co.uk).
+Developers at [Arcana Softworks](https://arcana-softworks.co.uk) have been building business-class PHP applications for more than 10 years. [Learn more about what we can do for you or your business](https://arcana-softworks.co.uk).
 
 ## Installation
 
