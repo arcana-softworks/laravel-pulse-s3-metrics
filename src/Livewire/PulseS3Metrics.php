@@ -37,7 +37,7 @@ class PulseS3Metrics extends Card
                         'updated_at' => $updatedAt = CarbonImmutable::createFromTimestamp($bucket->timestamp),
                         'recently_reported' => $updatedAt->isAfter(now()->startOfDay()->subDay()),
                     ];
-            });
+                });
         });
 
         if (Livewire::isLivewireRequest()) {

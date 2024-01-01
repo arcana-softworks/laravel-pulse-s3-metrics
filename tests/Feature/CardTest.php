@@ -1,6 +1,7 @@
 <?php
 
 use Arcana\PulseS3Metrics\Livewire\PulseS3Metrics;
+
 use function Pest\Livewire\livewire;
 
 it('includes the card on the dashboard', function () {

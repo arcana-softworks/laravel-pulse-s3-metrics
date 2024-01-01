@@ -2,13 +2,10 @@
 
 namespace Arcana\PulseS3Metrics\Tests;
 
-use Arcana\PulseS3Metrics\PulseS3MetricsServiceProvider;
 use Arcana\PulseS3Metrics\Recorders\S3Metrics;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Pulse\PulseServiceProvider;
-use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;

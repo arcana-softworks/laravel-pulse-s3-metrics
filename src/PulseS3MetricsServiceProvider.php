@@ -2,7 +2,6 @@
 
 namespace Arcana\PulseS3Metrics;
 
-use Arcana\PulseS3Metrics\Commands\PulseS3MetricsCommand;
 use Arcana\PulseS3Metrics\Livewire\PulseS3Metrics;
 use Illuminate\Foundation\Application;
 use Livewire\LivewireManager;

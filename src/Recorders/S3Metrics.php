@@ -4,7 +4,6 @@ namespace Arcana\PulseS3Metrics\Recorders;
 
 use Arcana\PulseS3Metrics\Events\S3MetricsRequested;
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\Support\Carbon;
 use Laravel\Pulse\Events\SharedBeat;
 use Laravel\Pulse\Pulse;
 
@@ -31,7 +30,7 @@ class S3Metrics
     {
         // Run every hour when running in worker mode.
         // The S3 metrics are updated on CloudWatch daily, so we can relax.
-        if ($event instanceof SharedBeat  &&
+        if ($event instanceof SharedBeat &&
             $event->time->minute !== 0 &&
             $event->time->second !== 0
         ) {
@@ -41,7 +40,7 @@ class S3Metrics
         // Configure and instantiate the CloudWatch client.
         $cloudWatch = new \Aws\CloudWatch\CloudWatchClient([
             'version' => 'latest',
-            'region'  => config('pulse-s3-metrics.region'),
+            'region' => config('pulse-s3-metrics.region'),
             'credentials' => [
                 'key' => config('pulse-s3-metrics.key'),
                 'secret' => config('pulse-s3-metrics.secret'),
@@ -49,7 +48,7 @@ class S3Metrics
         ]);
 
         // Create a slugged named for the bucket.
-        $slug = sprintf("%s.%s", config('pulse-s3-metrics.bucket'), config('pulse-s3-metrics.class'));
+        $slug = sprintf('%s.%s', config('pulse-s3-metrics.bucket'), config('pulse-s3-metrics.class'));
 
         // Get the bucket size in bytes from CloudWatch.
         // By default, the last 14 days are stored.
